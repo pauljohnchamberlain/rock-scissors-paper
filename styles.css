@@ -1,0 +1,99 @@
+body {
+    background-color: #ccc;
+    font-family:'Courier New', Courier, monospace;
+    width: 1000px;
+    margin: auto;
+    text-align: center;
+}
+
+.selections {
+    display: flex;
+    justify-content: center;
+}
+
+.selection {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 2rem;
+    transition: 100ms;
+}
+
+.selection:hover {
+    transform: scale(1.2);
+}
+
+.results {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.result-score {
+    margin-left: .1rem;
+    font-size: .5rem;
+    color: #333;
+    
+}
+
+.results-selection {
+    opacity: .5;
+}
+
+.results-selection-winners {
+    opacity: 1;
+    font-size: 1.5rem;
+}
+
+.choices {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+button {
+    background-color: orangered;
+    border: #ccc solid;
+    padding: 10px 50px 10px 50px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+}
+
+.scoreboard {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    background-color: aqua;
+}
+
+#players-score,#computers-score {
+    background-color: white;
+    font-size: 50px;
+    font-weight: bolder;
+    width: 250px;
+}
+
+.dashboard {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+#game-result {
+    background-color: yellow;
+    color: #333;
+    padding: 20px;
+    font-size: xx-large;
+    font-weight: bolder;
+}

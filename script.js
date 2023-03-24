@@ -1,79 +1,57 @@
-// Function to randomly return Rock, Paper, or Scissors
-    function getComputerChoice() {
-    const choices = ['Rock', 'Paper', 'Scissors'];
-    const randomIndex = Math.floor(Math.random() * 3);
-    return choices[randomIndex];
+const computerChoiceDisplay = document.getElementById('computer-choice')
+const playerChoiceDisplay = document.getElementById('user-choice')
+const resultDisplay = document.getElementById('result')
+const possibleChoices = document.querySelectorAll('button')
+let playerSelection
+let computerSelection
+let result
+
+possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click', (e) => {
+  playerSelection = e.target.id
+  playerChoiceDisplay.innerHTML = playerSelection
+  generateComputerChoice()
+  getResult()
+}))
+
+
+// Get computers choice
+function generateComputerChoice() {
+  const randomNumber = Math.floor(Math.random() * 3) + 1 // or you can use possibleChoices.length
+  
+  if (randomNumber === 1) {
+    computerSelection = 'rock'
   }
-  
-  // Function to play a single round of Rock Paper Scissors
-  function playRound(playerSelection, computerSelection) {
-    let result;
-  
-    if (!playerSelection) {
-      result = 'Invalid selection';
-    } else {
-      playerSelection = playerSelection.toLowerCase();
-    
-      if (playerSelection === 'rock') {
-        if (computerSelection === 'Rock') {
-          result = 'Tie!';
-        } else if (computerSelection === 'Paper') {
-          result = 'You Lose! Paper beats Rock';
-        } else if (computerSelection === 'Scissors') {
-          result = 'You Win! Rock beats Scissors';
-        }
-      } else if (playerSelection === 'paper') {
-        if (computerSelection === 'Rock') {
-          result = 'You Win! Paper beats Rock';
-        } else if (computerSelection === 'Paper') {
-          result = 'Tie!';
-        } else if (computerSelection === 'Scissors') {
-          result = 'You Lose! Scissors beats Paper';
-        }
-      } else if (playerSelection === 'scissors') {
-        if (computerSelection === 'Rock') {
-          result = 'You Lose! Rock beats Scissors';
-        } else if (computerSelection === 'Paper') {
-          result = 'You Win! Scissors beats Paper';
-        } else if (computerSelection === 'Scissors') {
-          result = 'Tie!';
-        }
-      } else {
-        result = 'Invalid selection';
-      }
-    }
-  
-    return result;
+  if (randomNumber === 2) {
+    computerSelection = 'scissors'
   }
-  
-  
-  // Function to play a 5 round game and keep score
-  function game() {
-    let playerScore = 0;
-    let computerScore = 0;
-  
-    for (let i = 0; i < 5; i++) {
-      const playerSelection = prompt('Enter Rock, Paper, or Scissors:');
-      const computerSelection = getComputerChoice();
-      const result = playRound(playerSelection, computerSelection);
-      console.log(result);
-  
-      if (result.includes('Win')) {
-        playerScore++;
-      } else if (result.includes('Lose')) {
-        computerScore++;
-      }
-    }
-  
-    if (playerScore > computerScore) {
-      console.log('You win the game!' + ' ' + playerScore + ' to ' + computerScore);
-    } else if (playerScore < computerScore) {
-      console.log('You lose the game!' + ' ' + playerScore + ' to ' + computerScore);
-    } else {
-      console.log('Tie game!');
-    }
+  if (randomNumber === 3) {
+    computerSelection = 'paper'
   }
-  
-  // Start the game
-  game();
-  
+  computerChoiceDisplay.innerHTML = computerSelection
+}
+
+// Determine Winner
+function getResult() {
+  if (computerSelection === playerSelection) {
+    result = 'its a draw!'
+  }
+  if (computerSelection === 'rock' && playerSelection === "paper") {
+    result = 'you win!'
+  }
+  if (computerSelection === 'rock' && playerSelection === "scissors") {
+    result = 'you lost!'
+  }
+  if (computerSelection === 'paper' && playerSelection === "scissors") {
+    result = 'you win!'
+  }
+  if (computerSelection === 'paper' && playerSelection === "rock") {
+    result = 'you lose!'
+  }
+  if (computerSelection === 'scissors' && playerSelection === "rock") {
+    result = 'you win!'
+  }
+  if (computerSelection === 'scissors' && playerSelection === "paper") {
+    result = 'you lose!'
+  }
+  resultDisplay.innerHTML = result
+}
