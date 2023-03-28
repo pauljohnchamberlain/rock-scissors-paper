@@ -20,6 +20,10 @@ const gameResultDisplay = document.createElement('div');
 gameResultDisplay.classList.add('game-result');
 gameResultDisplay.textContent = 'And the winner is ...';
 
+const resetButton = document.createElement('button');
+resetButton.textContent = 'Play Again';
+resetButton.classList = 'reset-button';
+
 // Get computers choice
 function generateComputerChoice() {
     const randomNumber = Math.floor(Math.random() * 3) + 1 // or you can use possibleChoices.length
@@ -101,14 +105,17 @@ function playGame(event) {
             if (playerScore > computerScore) {
                 gameResultDisplay.textContent = 'Congratulations! You Win!';
                 gameResultPlaceholder.appendChild(gameResultDisplay);
+                gameResultDisplay.appendChild(resetButton);
             } 
             if (computerScore > playerScore) {
                 gameResultDisplay.textContent = 'Sorry you lose! Try again!';
                 gameResultPlaceholder.appendChild(gameResultDisplay);
+                gameResultDisplay.appendChild(resetButton);
             }
             if (playerScore === computerScore) {
                 gameResultDisplay.textContent = 'Its a tie';
                 gameResultPlaceholder.appendChild(gameResultDisplay);
+                gameResultDisplay.appendChild(resetButton);
             }
         }
     }
@@ -119,5 +126,27 @@ function playGame(event) {
         })
     }
 
+// Add click event listener to reset button
+resetButton.addEventListener('click', resetGame);
 
+function resetGame() {
+    // Reset scores
+    playerScore = 0;
+    computerScore = 0;
+    playerScoreDisplay.innerHTML = playerScore;
+    computerScoreDisplay.innerHTML = computerScore;
+    rounds = 0;
+    roundsDisplay.innerHTML = rounds;
 
+    // Enable buttons
+    possibleChoices.forEach(elem => {
+        elem.disabled = false;
+    });
+
+    // Remove game result display
+    gameResultDisplay.remove();
+
+    // Clear moves
+    playerMoves.innerHTML = '';
+    computerMoves.innerHTML = '';
+}

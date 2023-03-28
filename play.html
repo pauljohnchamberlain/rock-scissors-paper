@@ -7,7 +7,7 @@
   </head>
   <body>
     <div id="main">
-      <h1>Rock, Scissors, Paper</h1>
+      <h1 class="title">Rock, Scissors, Paper</h1>
       <div id="game-result-placeholder"></div>
       <div class="scoreboard">
         <div class="players">
@@ -19,16 +19,19 @@
           <p id="computers-score">0</p>
         </div>
       </div>
-      <div class="choices">
-        <h2>Your Choice: <span id="user-choice"></span></h2>
-        <h2>Computer Choice: <span id="computer-choice"></span></h2>
-      </div>
-      <h2>Result: <br /><span id="result"></span></h2>
       <div class="buttons">
         <button id="rock">rock</button>
         <button id="paper">paper</button>
         <button id="scissors">scissors</button>
       </div>
+      <div class="round-results">
+        <div class="choices">
+          <h2>Your Choice: <span id="user-choice"></span></h2>
+          <h2>Computer Choice: <span id="computer-choice"></span></h2>
+        </div>
+        <h2 class="result">Result: <span id="result"></span></h2>
+      </div>
+      
       <h1>Rounds</h1>
       <p><span id="rounds"></span> / 5</p>
       <div class="dashboard">
