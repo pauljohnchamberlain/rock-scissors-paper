@@ -15,6 +15,11 @@ let playerSelection
 let computerSelection
 let result
 
+const gameResultPlaceholder = document.querySelector('#game-result-placeholder');
+const gameResultDisplay = document.createElement('div');
+gameResultDisplay.classList.add('game-result');
+gameResultDisplay.textContent = 'And the winner is ...';
+
 // Get computers choice
 function generateComputerChoice() {
     const randomNumber = Math.floor(Math.random() * 3) + 1 // or you can use possibleChoices.length
@@ -93,9 +98,18 @@ function playGame(event) {
         
         if (rounds === 5) {
             disableButtons()
-            if (playerScore > computerScore) gameResult.innerHTML = 'Congratulations! You Win!'
-            if (computerScore > playerScore) gameResult.innerHTML = 'You Lose! Better Luck Next Time'
-            if (playerScore === computerScore) gameResult.innerHTML = 'Its a tied game. Try again.'
+            if (playerScore > computerScore) {
+                gameResultDisplay.textContent = 'Congratulations! You Win!';
+                gameResultPlaceholder.appendChild(gameResultDisplay);
+            } 
+            if (computerScore > playerScore) {
+                gameResultDisplay.textContent = 'Sorry you lose! Try again!';
+                gameResultPlaceholder.appendChild(gameResultDisplay);
+            }
+            if (playerScore === computerScore) {
+                gameResultDisplay.textContent = 'Its a tie';
+                gameResultPlaceholder.appendChild(gameResultDisplay);
+            }
         }
     }
 
@@ -104,3 +118,6 @@ function playGame(event) {
             elem.disabled = true
         })
     }
+
+
+
