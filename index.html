@@ -3,22 +3,51 @@
   <head>
     <meta charset="utf-8" />
     <title>Rock Paper Scissors Tutorial</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body>
-    <h1>Your Score:</h1>
-    <p id="players-score"></p>
+    <div id="main">
+      <h1 class="title">Rock, Scissors, Paper</h1>
+      <div id="game-result-placeholder"></div>
+      <div class="scoreboard">
+        <div class="players">
+          <h1>Your Score:</h1>
+          <p id="players-score">0</p>
+        </div>
+        <div class="players">
+          <h1>Computers Score:</h1>
+          <p id="computers-score">0</p>
+        </div>
+      </div>
+      <div class="buttons">
+        <button id="rock">rock</button>
+        <button id="paper">paper</button>
+        <button id="scissors">scissors</button>
+      </div>
+      <div class="round-results">
+        <div class="choices">
+          <h2>Your Choice: <span id="user-choice"></span></h2>
+          <h2>Computer Choice: <span id="computer-choice"></span></h2>
+        </div>
+        <h2 class="result">Result: <span id="result"></span></h2>
+      </div>
 
-    <h1>Computers Score:</h1>
-    <p id="computers-score"></p>
+      <h1>Rounds</h1>
+      <p><span id="rounds"></span> / 5</p>
+      <div class="dashboard">
+        <div class="player">
+          <h2>Player</h2>
+          <div id="player-moves"></div>
+        </div>
+        <div class="computer">
+          <h2>Computer</h2>
+          <div id="computer-moves"></div>
+        </div>
+      </div>
+    </div>
 
-    <h2>Computer Choice: <span id="computer-choice"></span></h2>
-    <h2>Your Choice: <span id="user-choice"></span></h2>
-    <h2>Result: <span id="result"></span></h2>
-
-    <button id="rock">rock</button>
-    <button id="paper">paper</button>
-    <button id="scissors">scissors</button>
-
-    <script src="script.js" charset="utf-8"></script>
+    <script src="play.js" charset="utf-8"></script>
   </body>
 </html>
